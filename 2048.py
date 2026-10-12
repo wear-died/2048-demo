@@ -2,6 +2,9 @@ import pygame
 import sys
 import random
 
+# 生成数字块"4"的概率
+TILE_4_PROBABILITY = 0.1
+
 # 颜色定义
 BLACK = (0, 0, 10)
 RED = (200, 50, 50)
@@ -227,7 +230,7 @@ class Game:
         empties = [(r, c) for r in range(self.grid_size) for c in range(self.grid_size) if self.grid[r][c] == 0]
         if empties:
             r, c = random.choice(empties)
-            self.grid[r][c] = 2
+            self.grid[r][c] = 2 if random.random() < (1 - TILE_4_PROBABILITY) else 4
 
     def move(self, direction):
         if self.state != 'IDLE':
