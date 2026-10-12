@@ -227,7 +227,7 @@ class Game:
         empties = [(r, c) for r in range(self.grid_size) for c in range(self.grid_size) if self.grid[r][c] == 0]
         if empties:
             r, c = random.choice(empties)
-            self.grid[r][c] = 2
+            self.grid[r][c] = 2 if random.random() < 0.9 else 4
 
     def move(self, direction):
         if self.state != 'IDLE':
